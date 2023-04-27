@@ -129,6 +129,10 @@ func (r *resource) resolveFragment(c *Compiler, sr *resource, f string) (*resour
 		return res, nil
 	}
 
+	if res, ok := r.subresources[f]; ok {
+		return res, nil
+	}
+
 	// non-standrad location
 	doc := r.doc
 	for _, item := range strings.Split(floc[2:], "/") {
